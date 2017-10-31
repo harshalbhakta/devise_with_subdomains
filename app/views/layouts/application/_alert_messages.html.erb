@@ -1,0 +1,18 @@
+<!-- Devise alert messages -->
+<% if flash.count > 0 %>
+<div id="alert-container" style="padding: 15px; padding-bottom: 0px;">
+  <% flash.each do |name, msg| %>
+    <% if name == :error || name == :alert || name == "alert" || name == "error" %>
+      <div class="alert alert-danger alert-dismissable" style="margin-bottom: 0px;">
+        <button type="button" onclick="getElementById('alert-container').style.display = 'none';" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= msg %>
+      </div>
+    <% elsif name == :notice || name == "notice" %>
+      <div class="alert alert-success alert-dismissable" style="margin-bottom: 0px;">
+        <button type="button" onclick="getElementById('alert-container').style.display = 'none';" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= msg %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<% end %>
