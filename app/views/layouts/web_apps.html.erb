@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DeviseWithSubdomains</title>
+    <title><%= @subdomain_app.name %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,14 +10,14 @@
 
   <body>
     <ul>
-      <% if user_signed_in? %>
+      <% if app_user_signed_in? %>
         <li>
-        <%= current_user.name %>
-        <%= link_to('Logout', destroy_user_session_url, method: :delete) %>
+        <%= current_app_user.name %>
+        <%= link_to('Logout', destroy_app_user_session_url, method: :delete) %>
         </li>
       <% else %>
         <li>
-        <%= link_to('Login', new_user_session_url)  %>
+        <%= link_to('Login', new_app_user_session_url)  %>
         </li>
       <% end %>
     </ul>

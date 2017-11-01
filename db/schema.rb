@@ -28,18 +28,18 @@ ActiveRecord::Schema.define(version: 20171031100627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["app_id"], name: "index_app_users_on_app_id"
-    t.index ["email"], name: "index_app_users_on_email", unique: true
+    t.index ["email", "app_id"], name: "index_app_users_on_email_and_app_id", unique: true
     t.index ["reset_password_token"], name: "index_app_users_on_reset_password_token", unique: true
   end
 
   create_table "apps", force: :cascade do |t|
     t.string "name"
-    t.string "slug"
+    t.string "subdomain"
     t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_apps_on_owner_id"
-    t.index ["slug"], name: "index_apps_on_slug"
+    t.index ["subdomain"], name: "index_apps_on_subdomain"
   end
 
   create_table "users", force: :cascade do |t|

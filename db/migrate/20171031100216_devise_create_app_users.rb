@@ -38,7 +38,7 @@ class DeviseCreateAppUsers < ActiveRecord::Migration[5.1]
       t.timestamps null: false
     end
 
-    add_index :app_users, :email,                unique: true
+    add_index :app_users, [:email, :app_id], :unique => true
     add_index :app_users, :reset_password_token, unique: true
     # add_index :app_users, :confirmation_token,   unique: true
     # add_index :app_users, :unlock_token,         unique: true
